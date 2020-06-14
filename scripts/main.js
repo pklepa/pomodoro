@@ -7,8 +7,8 @@ const shortBrkBtn = document.querySelector('#btn-shortBrk');
 const longBrkBtn = document.querySelector('#btn-longBrk');
 const roundCounter = document.querySelector('.roundCounter');
 
-let currentTimeMs = timerStr.textContent.split(':')[0] * 60000 + timerStr.textContent.split(':')[1] * 1000;
 let running = false;
+let currentTimeMs;
 let countDownDate;
 let counter;
 
@@ -30,7 +30,7 @@ startStopBtn.addEventListener('click', handleTimer);
 
 
 // ..:: Main Script ::..
-
+startTimer(timers.pomodoro, pomodoroBtn);
 
 
 
@@ -45,10 +45,13 @@ function handleClick(e) {
 
     switch (e.target.id) {
         case 'btn-pomodoro':
+            startTimer(timers.pomodoro, e.target);
             break;
         case 'btn-shortBrk':
+            startTimer(timers.short, e.target);
             break;
         case 'btn-longBrk':
+            startTimer(timers.long, e.target);
             break;
         case 'btn-settings':
             break;
@@ -103,6 +106,14 @@ function updateTimer() {
 }
 
 
+function startTimer(time, btn){
+    timerStr.textContent = time;
+    currentTimeMs = timerStr.textContent.split(':')[0] * 60000 + timerStr.textContent.split(':')[1] * 1000;
+
+    btn.classList.add('active');
+    startStopBtn.textContent = 'Start';
+}
+
 
 function endTimer() {
     clearInterval(counter);
@@ -119,23 +130,23 @@ function endTimer() {
     switch (currentFunction) {
         case 'btn-shortBrk':
             alert("Time's up! Back to work.");
-            startPomodoro();
+            startTimer(timers.pomodoro, pomodoroBtn);
             if (roundCounter.textContent[0] != '4') {
                 roundCounter.textContent = `${Number(roundCounter.textContent[0]) + 1}/4`;
             }
             break;
         case 'btn-longBrk':
             alert("Time's up! Back to work.");
-            startPomodoro();
+            startTimer(timers.pomodoro, pomodoroBtn);
+            roundCounter.textContent = `1/4`;
             break;
 
         case 'btn-pomodoro':
             alert(`Time's up! You should probably take a break now.`);
             if (roundCounter.textContent !== '4/4') {
-                startShortBreak();
+                startTimer(timers.short, shortBrkBtn);
             } else {
-                roundCounter.textContent = `1/4`;
-                startLongBreak();
+                startTimer(timers.long, longBrkBtn);
             }
             break;
         default:
@@ -146,30 +157,8 @@ function endTimer() {
     }
 }
 
-function startShortBreak() {
-    timerStr.textContent = timers.short;
-    currentTimeMs = timerStr.textContent.split(':')[0] * 60000 + timerStr.textContent.split(':')[1] * 1000;
 
-    shortBrkBtn.classList.add('active');
-    startStopBtn.textContent = 'Start';
 
-}
-
-function startPomodoro() {
-  timerStr.textContent = timers.pomodoro;
-  currentTimeMs = timerStr.textContent.split(':')[0] * 60000 + timerStr.textContent.split(':')[1] * 1000;
-  
-  pomodoroBtn.classList.add('active');
-  startStopBtn.textContent = 'Start';
-}
-
-function startLongBreak(){
-  timerStr.textContent = timers.long;
-  currentTimeMs = timerStr.textContent.split(':')[0] * 60000 + timerStr.textContent.split(':')[1] * 1000;
-  
-  longBrkBtn.classList.add('active');
-  startStopBtn.textContent = 'Start';
-}
 
 // - Helper functions
 function pad(str, max) {
