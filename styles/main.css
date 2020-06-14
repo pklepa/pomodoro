@@ -1,0 +1,108 @@
+:root {
+    --background-color: rgb(206, 82, 82);
+    --primary-color: rgb(218, 113, 113);
+}
+
+#page-home {
+    background-color: var(--background-color);
+
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* font-family: 'Balsamiq Sans', cursive; */
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 24px;
+    color: white;
+}
+
+header .title {
+    display: flex;
+    justify-content: center;
+
+    margin: 20px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+main .containerPomo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 600px;
+    min-height: 300px;
+    border-radius: 25px;
+    background-color: var(--primary-color);
+}
+
+main .containerPomo .settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .containerPomo .settings button{
+    margin: 20px 5px 0px;
+
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 20px;
+    padding: 10px 14px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+main .containerPomo .settings button.active,
+main .containerPomo .settings button:hover {
+    background-color: var(--background-color);
+}
+
+main .containerPomo .timer#timer-str {
+    font-weight: bold;
+    font-size: 90px;
+    margin: 0 auto;    
+}
+
+main .containerPomo .startStop #btn-startStop{
+  border: none;
+  border-radius: 4px;
+  color: var(--primary-color);
+  background-color: white;
+
+  padding: 10px 40px;
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+main .containerPomo .start #btn-start:hover {
+  transform: scale(1.05);
+}
+
+
+
+footer {
+    position: absolute;
+    display: fixed;
+    bottom: 0;
+    left: 0;
+
+    height: 40px;
+    width: 100%;
+    background-color: var(--primary-color);
+}
+
+footer .footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:10px 0 0;
+}
