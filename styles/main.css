@@ -14,7 +14,6 @@
     justify-content: center;
     align-items: center;
 
-    /* font-family: 'Balsamiq Sans', cursive; */
     font-family: 'Ubuntu', sans-serif;
     font-size: 24px;
     color: white;
@@ -23,10 +22,21 @@
 header .title {
     display: flex;
     justify-content: center;
+    align-items: center;
 
-    margin: 20px;
-    font-size: 32px;
+    margin-bottom: 60px;
+    font-size: 44px;
     font-weight: bold;
+}
+
+header .title {
+    line-height: 60px;
+}
+
+header .title img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
 }
 
 main .containerPomo {
@@ -34,6 +44,8 @@ main .containerPomo {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+
+    margin-bottom: 15vh;
     min-width: 600px;
     min-height: 300px;
     border-radius: 25px;
@@ -52,8 +64,8 @@ main .containerPomo .settings button{
     border: none;
     border-radius: 4px;
     color: white;
-    font-size: 20px;
-    padding: 10px 14px;
+    font-size: 16px;
+    padding: 8px 14px;
     background-color: var(--primary-color);
     cursor: pointer;
 }
@@ -61,12 +73,21 @@ main .containerPomo .settings button{
 main .containerPomo .settings button.active,
 main .containerPomo .settings button:hover {
     background-color: var(--background-color);
+    font-weight: bold;
 }
 
 main .containerPomo .timer#timer-str {
+    font-family: 'Bellota', sans-serif;
     font-weight: bold;
-    font-size: 90px;
-    margin: 0 auto;    
+    font-size: 110px;
+    margin: 10px 0 40px;
+    /* margin: 0 auto; */
+}
+
+main .containerPomo .roundCounter {
+    font-size: 25px;
+    margin-top: 20px;
+    text-align: center;
 }
 
 main .containerPomo .startStop #btn-startStop{
