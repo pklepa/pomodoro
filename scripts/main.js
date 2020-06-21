@@ -1,15 +1,17 @@
 // - Global Variables
-const timerStr = document.getElementById('timer-str');
-const buttons = document.querySelectorAll('.btn');
-const pomodoroBtn = document.querySelector('#btn-pomodoro');
+const timerStr =     document.getElementById('timer-str');
+const buttons =      document.querySelectorAll('.btn');
+const pomodoroBtn =  document.querySelector('#btn-pomodoro');
 const startStopBtn = document.querySelector('#btn-startStop');
-const shortBrkBtn = document.querySelector('#btn-shortBrk');
-const longBrkBtn = document.querySelector('#btn-longBrk');
+const shortBrkBtn =  document.querySelector('#btn-shortBrk');
+const longBrkBtn =   document.querySelector('#btn-longBrk');
 const roundCounter = document.querySelector('.roundCounter');
+const resetBtn =     document.querySelector('#resetTimer');
 
 let running = false;
 let currentTimeMs;
 let countDownDate;
+let currentFunction;
 let counter;
 
 const timers = {
@@ -23,35 +25,48 @@ const timers = {
 buttons.forEach((btn) => {
     btn.addEventListener('click', handleClick);
 });
-
 startStopBtn.addEventListener('click', handleTimer);
+resetBtn.addEventListener('click', () => {
+    resetTimer();
+    switch (currentFunction) {
+        case 'btn-pomodoro':
+            setTimer(timers.pomodoro, pomodoroBtn);            
+            break;
+        case 'btn-shortBrk':
+            setTimer(timers.short, shortBrkBtn);            
+            break;
+        case 'btn-longBrk':
+            setTimer(timers.long, longBrkBtn);            
+            break;
+        default:
+            break;
+    }
+});
 
 
 
 
 // ..:: Main Script ::..
-startTimer(timers.pomodoro, pomodoroBtn);
+setTimer(timers.pomodoro, pomodoroBtn);
 
 
 
 
 // - Functions
 function handleClick(e) {
-    buttons.forEach((btn) => {
-        if (btn.classList.contains('active')) btn.classList.remove('active');
-    });
+    resetTimer();
 
     e.target.classList.add('active');
 
     switch (e.target.id) {
         case 'btn-pomodoro':
-            startTimer(timers.pomodoro, e.target);
+            setTimer(timers.pomodoro, pomodoroBtn);
             break;
         case 'btn-shortBrk':
-            startTimer(timers.short, e.target);
+            setTimer(timers.short, shortBrkBtn);
             break;
         case 'btn-longBrk':
-            startTimer(timers.long, e.target);
+            setTimer(timers.long, longBrkBtn);
             break;
         case 'btn-settings':
             break;
@@ -106,7 +121,9 @@ function updateTimer() {
 }
 
 
-function startTimer(time, btn){
+function setTimer(time, btn){
+    currentFunction = btn.id;
+    
     timerStr.textContent = time;
     currentTimeMs = timerStr.textContent.split(':')[0] * 60000 + timerStr.textContent.split(':')[1] * 1000;
 
@@ -116,48 +133,50 @@ function startTimer(time, btn){
 
 
 function endTimer() {
-    clearInterval(counter);
-    running = false;
-    let currentFunction;
+    resetTimer();
 
-    buttons.forEach((btn) => {
-        if (btn.classList.contains('active')) {
-            currentFunction = btn.id;
-            btn.classList.remove('active');
-        }
-    });
-
+    console.log(currentFunction)
     switch (currentFunction) {
         case 'btn-shortBrk':
             alert("Time's up! Back to work.");
-            startTimer(timers.pomodoro, pomodoroBtn);
+            setTimer(timers.pomodoro, pomodoroBtn);
+            currentFunction = pomodoroBtn.id;
             if (roundCounter.textContent[0] != '4') {
                 roundCounter.textContent = `${Number(roundCounter.textContent[0]) + 1}/4`;
             }
             break;
         case 'btn-longBrk':
             alert("Time's up! Back to work.");
-            startTimer(timers.pomodoro, pomodoroBtn);
+            setTimer(timers.pomodoro, pomodoroBtn);
+            currentFunction = pomodoroBtn.id;
             roundCounter.textContent = `1/4`;
             break;
 
         case 'btn-pomodoro':
             alert(`Time's up! You should probably take a break now.`);
             if (roundCounter.textContent !== '4/4') {
-                startTimer(timers.short, shortBrkBtn);
+                setTimer(timers.short, shortBrkBtn);
+                currentFunction = shortBrkBtn.id;
             } else {
-                startTimer(timers.long, longBrkBtn);
+                setTimer(timers.long, longBrkBtn);
+                currentFunction = longBrkBtn.id;
             }
             break;
         default:
             console.warn('[3] Ooops. Something went wrong.');
             break;
-
-
     }
 }
 
 
+function resetTimer(){
+    clearInterval(counter);
+    running = false;
+
+    buttons.forEach((btn) => {
+        if (btn.classList.contains('active')) btn.classList.remove('active');
+    });
+}
 
 
 // - Helper functions

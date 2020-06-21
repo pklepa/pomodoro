@@ -40,6 +40,7 @@ header .title img {
 }
 
 main .containerPomo {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,17 +98,45 @@ main .containerPomo .startStop #btn-startStop{
   background-color: white;
 
   padding: 10px 40px;
-  margin-bottom: 15px;
   font-size: 24px;
   font-weight: bold;
 
   cursor: pointer;
 }
 
-main .containerPomo .start #btn-start:hover {
-  transform: scale(1.05);
+main .containerPomo .startStop {
+    margin-bottom: 15px;
+    transition: 1000ms;
 }
 
+
+
+main .containerPomo .startStop button#btn-startStop:hover {
+    transform: scale(1.05);
+}
+
+main .containerPomo p {
+    position: absolute;
+    right: 22.5px;
+    bottom: 22.5px;
+    color: white;
+    font-family: "Material Icons";
+    font-size: 40px;
+    opacity: 0.6;
+
+    margin-left: 20px;
+}
+
+main .containerPomo p:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+main .containerPomo p:active {
+    opacity: 0.6;
+}
+
+        
 
 
 footer {

@@ -3,8 +3,6 @@
 
 
 # TO-DO
-- Create a reset timer function / button
-- Reset timer when a new type of timer is selected
 - Implement settings
     - change length of timers
 - Add alert sounds
