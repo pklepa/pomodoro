@@ -61,14 +61,20 @@ main .containerPomo .settings {
 
 main .containerPomo .settings button{
     margin: 20px 5px 0px;
-
+    
     border: none;
     border-radius: 4px;
+    
     color: white;
     font-size: 16px;
+    
     padding: 8px 14px;
     background-color: var(--primary-color);
     cursor: pointer;
+    
+    
+    min-width: 120px;
+    min-height: 34px;
 }
 
 main .containerPomo .settings button.active,
@@ -76,6 +82,27 @@ main .containerPomo .settings button:hover {
     background-color: var(--background-color);
     font-weight: bold;
 }
+
+main .containerPomo #btn-settings {
+    position: absolute;
+    right: 26px;
+    top: 22.5px;
+    color: white;
+    font-family: "Material Icons";
+    font-size: 30px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+main .containerPomo #btn-settings:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+main .containerPomo #btn-settings:active {
+    opacity: 0.6;
+}
+
 
 main .containerPomo .timer#timer-str {
     font-family: 'Bellota', sans-serif;
@@ -115,28 +142,29 @@ main .containerPomo .startStop button#btn-startStop:hover {
     transform: scale(1.05);
 }
 
-main .containerPomo p {
+
+main .containerPomo #resetTimer {
     position: absolute;
     right: 22.5px;
     bottom: 22.5px;
     color: white;
     font-family: "Material Icons";
-    font-size: 40px;
+    font-size: 38px;
     opacity: 0.6;
 
     margin-left: 20px;
 }
 
-main .containerPomo p:hover {
+main .containerPomo #resetTimer:hover {
     opacity: 1;
     cursor: pointer;
 }
 
-main .containerPomo p:active {
+main .containerPomo #resetTimer:active {
     opacity: 0.6;
 }
 
-        
+
 
 
 footer {
@@ -155,4 +183,123 @@ footer .footer-content {
     justify-content: center;
     align-items: center;
     margin:10px 0 0;
+}
+
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+  
+/* Modal Content/Box */
+.modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    position: relative;
+
+    background-color: rgba(0, 0, 0, 0.548);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border-radius: 10px;
+
+    width: 550px;
+    height: 300px;
+}
+
+.modal .modal-content .modal-header {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 28px;
+}
+
+
+.modal .modal-content .modal-header .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal .modal-content .modal-header .close:hover,
+.modal .modal-content .modal-header .close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal .modal-content .close:active {
+    color: #aaa;
+}
+
+
+.modal .modal-content .modal-form {
+    display: flex;
+    flex-direction: c;
+    
+
+    margin-top: 60px;
+}
+
+.modal .modal-content .modal-form .input-div label {
+    display: block;
+
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+
+.modal .modal-content .modal-form .input-div + .input-div {
+    margin-left: 50px;
+}
+
+.modal .modal-content .modal-form .input-div input {
+    border-radius: 4px;
+    border: none;
+    width: 130px;
+
+    font-size: 16px;
+    line-height: 1.5em;
+
+    padding-left: 10px;
+}
+
+.modal .modal-content button#btn-applySettings {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+
+    bottom: 30px;
+
+    color: black;
+    font-size: 20px;
+
+    background-color: white;
+    
+
+    padding: 8px 14px;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+}
+
+.modal .modal-content button#btn-applySettings:active {
+    background-color: black;
+    color: white;
 }

@@ -1,61 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pomodoro Timer</title>
+        <title>Pomodoro Timer</title>
 
-    <link rel="stylesheet" href="./styles/reset.css">
-    <link rel="stylesheet" href="./styles/main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&family=Bellota&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="./styles/reset.css">
+        <link rel="stylesheet" href="./styles/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&family=Bellota&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-</head>
+    </head>
 
-<body>
-    <div id="page-home">
+    <body>
+        <div id="page-home">
 
-        <header>
-            <div class="title">
-                <img src="./assets/tomato2.svg" alt="Logo">
-                <h1>Pomodoro Timer</h1>
-            </div>
-        </header>
-
-
-        <main>  
-
-            <div class="containerPomo">
-                <div class="settings">
-                    <button id="btn-pomodoro" class="btn active">Pomodoro</button>
-                    <button id="btn-shortBrk" class="btn">Short Break</button>
-                    <button id="btn-longBrk" class="btn">Long Break</button>
-                    <button id="btn-settings" class="btn"><span></span>Settings</button>
+            <header>
+                <div class="title">
+                    <img src="./assets/tomato2.svg" alt="Logo">
+                    <h1>Pomodoro Timer</h1>
                 </div>
-                <div class="roundCounter">1/4</div>
-                <div id="timer-str" class="timer"></div>
+            </header>
 
-                <div class="startStop">
-                    <button id="btn-startStop">Start</button>
+            <main>
+
+                <div class="containerPomo">
+                    <div class="settings">
+                        <button id="btn-pomodoro" class="btn active">Pomodoro</button>
+                        <button id="btn-shortBrk" class="btn">Short Break</button>
+                        <button id="btn-longBrk" class="btn">Long Break</button>
+                    </div>
+                    <p id="btn-settings">settings</p>
+
+                    <div class="roundCounter">1/4</div>
+                    <div id="timer-str" class="timer"></div>
+
+                    <div class="startStop">
+                        <button id="btn-startStop">Start</button>
+                    </div>
+
+                    <p id="resetTimer">refresh</p>
                 </div>
 
-                <p id="resetTimer">refresh</p>
-            </div>   
+            </main>
 
-        </main>
+            <footer>
+                <div class="footer-content">
+                    <p>footer</p>
+                </div>
+            </footer>
 
-        <footer>
-            <div class="footer-content">
-                <p>footer</p>        
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>Settings</h2>
+                        <span class="close">&times;</span>
+                    </div>
+
+                    <div class="modal-form">
+                        <div class="input-div">
+                            <label for="pomodoro">Pomodoro Timer</label>
+                            <input type="number" id="settingsPomodoro" name="pomodoro" value="25">                        
+                        </div>
+
+                        <div class="input-div">
+                            <label for="shortBrk">Short Break</label>
+                            <input type="number" id="settingsShortBrk" name="shortBrk" value="5">
+                        </div>
+
+                        <div class="input-div">
+                            <label for="longBrk">Long Break</label>
+                            <input type="number" id="settingsLongBrk" name="longBrk" value="15">
+                        </div>
+
+                        
+                    </div>
+
+                    <button id="btn-applySettings">Apply</button>
+
+                </div>
+
             </div>
-        </footer>
 
-    </div>      
+            <script src="./scripts/main.js"></script>
+        </body>
 
-
-    <script src="./scripts/main.js"></script>
-</body>
-
-
-</html>r
+    </html>

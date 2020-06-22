@@ -7,6 +7,7 @@ const shortBrkBtn =  document.querySelector('#btn-shortBrk');
 const longBrkBtn =   document.querySelector('#btn-longBrk');
 const roundCounter = document.querySelector('.roundCounter');
 const resetBtn =     document.querySelector('#resetTimer');
+const settingsBtn =  document.querySelector('#btn-settings');
 
 let running = false;
 let currentTimeMs;
@@ -187,3 +188,23 @@ function pad(str, max) {
 
     return str.length < max ? pad("0" + str, max) : str;
 }
+
+
+
+// ..:: MODAL SETTINGS
+
+
+const modal = document.querySelector("#myModal");
+
+const span = document.querySelector(".close");
+
+// When the user clicks on the button, open the modal
+settingsBtn.addEventListener('click', () => modal.style.display = 'block');
+
+// When the user clicks on <span> (x), close the modal
+span.addEventListener('click', () => modal.style.display = 'none');
+
+// When the user clicks anywhere outside of the modal, close it
+window.addEventListener('click', (e) => {
+    if (e.target == modal) modal.style.display = "none"
+});
