@@ -3,6 +3,9 @@
 
 This project aimed to further improve our Javascript proficiency in a [pair-programming](https://techcrunch.com/2012/03/17/pair-programming-considered-extremely-beneficial/) environment, shifting the 'driver seat' as often as feasable.
 
+# TO - DO
+- Add media queries to better fit smaller screens
+
 
 # Future works
 - Alert sounds
