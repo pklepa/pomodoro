@@ -8,6 +8,10 @@ const longBrkBtn =   document.querySelector('#btn-longBrk');
 const roundCounter = document.querySelector('.roundCounter');
 const resetBtn =     document.querySelector('#resetTimer');
 const settingsBtn =  document.querySelector('#btn-settings');
+const applyBtn =     document.querySelector('#btn-applySettings');
+const settingsInput= document.querySelectorAll('.input-div input');
+
+console.log(settingsInput);
 
 let running = false;
 let currentTimeMs;
@@ -15,7 +19,7 @@ let countDownDate;
 let currentFunction;
 let counter;
 
-const timers = {
+let timers = {
     pomodoro: "25:00",
     short: "05:00",
     long: "15:00",
@@ -23,10 +27,38 @@ const timers = {
 
 
 // - Eventlisteners
+
+applyBtn.addEventListener('click', () => {
+    resetTimer();
+
+    timers.pomodoro = `${pad(settingsInput[0].value, 2)}:00`;
+    timers.short    = `${pad(settingsInput[1].value, 2)}:00`;
+    timers.long     = `${pad(settingsInput[2].value, 2)}:00`;
+
+    setTimeout(() => (modal.style.display = "none"), 300);
+
+    switch (currentFunction) {
+        case 'btn-pomodoro':
+            setTimer(timers.pomodoro, pomodoroBtn);            
+            break;
+        case 'btn-shortBrk':
+            setTimer(timers.short, shortBrkBtn);            
+            break;
+        case 'btn-longBrk':
+            setTimer(timers.long, longBrkBtn);            
+            break;
+        default:
+            break;
+    }
+});
+
+
 buttons.forEach((btn) => {
     btn.addEventListener('click', handleClick);
 });
+
 startStopBtn.addEventListener('click', handleTimer);
+
 resetBtn.addEventListener('click', () => {
     resetTimer();
     switch (currentFunction) {
@@ -47,7 +79,7 @@ resetBtn.addEventListener('click', () => {
 
 
 
-// ..:: Main Script ::..
+// ..:: One time calls ::..
 setTimer(timers.pomodoro, pomodoroBtn);
 
 
@@ -115,7 +147,7 @@ function updateTimer() {
 
         timerStr.textContent = `${minutes}:${seconds}`;
 
-        if (timerStr.textContent == '00:00') {
+        if (timerStr.textContent == '00:00' || timerStr.textContent == '-1:-1') {
             endTimer();
         }
     }
@@ -124,12 +156,29 @@ function updateTimer() {
 
 function setTimer(time, btn){
     currentFunction = btn.id;
-    
+     
     timerStr.textContent = time;
     currentTimeMs = timerStr.textContent.split(':')[0] * 60000 + timerStr.textContent.split(':')[1] * 1000;
 
     btn.classList.add('active');
     startStopBtn.textContent = 'Start';
+
+    switch (btn.id) {
+        case 'btn-pomodoro':
+            document.documentElement.style.setProperty('--background-color', 'rgb(206, 82, 82)');    
+            document.documentElement.style.setProperty('--primary-color', 'rgb(218, 113, 113)');    
+            break;
+        case 'btn-shortBrk':
+            document.documentElement.style.setProperty('--background-color', 'rgb(16, 111, 135)');  
+            document.documentElement.style.setProperty('--primary-color', 'rgb(43, 135, 152)');    
+            break;
+        case 'btn-longBrk':
+            document.documentElement.style.setProperty('--background-color', 'rgb(50, 44, 127)');  
+            document.documentElement.style.setProperty('--primary-color', 'rgb(68, 61, 152)');
+            break;
+        default:
+            break;
+    }
 }
 
 
