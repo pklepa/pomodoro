@@ -3,6 +3,9 @@
 
 > See it live on [pklepa.github.io/pomodoro](https://pklepa.github.io/pomodoro/)
 
+# screenshots
+![image](https://user-images.githubusercontent.com/22618438/102665235-5dc6ec80-417c-11eb-81dc-3081f4656bdc.png)
+
 # objectives
 The main objective of this project is to familiarize and apply the following:
 - Work in a Pair-programming environment both as a driver and as a navigator as a mean of creation of better code and learning
